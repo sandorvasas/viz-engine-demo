@@ -1,0 +1,16 @@
+// name damage explosion_radius speed mass model
+projectiles {
+	rocket1	120.0 	4.0 	3.5 	45.0	data/models/rocket1.md5mesh
+}
+
+// name type attack_range damage mass model idle_anim lower_anim raise_anim attack1_anim attack2_anim reload_anim
+weapons {
+	weapon	fists	melee	10.0	500.0	0.0
+		data/models/hands/fists.md5mesh	
+		data/models/hands/anim/idle.md5anim	
+		data/models/hands/anim/lower.md5anim	
+		data/models/hands/anim/raise.md5anim	
+		data/models/hands/anim/berserk_punch1.md5anim
+		data/models/hands/anim/berserk_punch2.md5anim
+		data/models/hands/anim/idle.md5anim
+}

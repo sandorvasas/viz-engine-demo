@@ -1,0 +1,10 @@
+resolution 			1024x768x85
+bpp 				32
+multisampling		0
+depthoffield		0
+ambientocclusion 	0
+rendertexturetype	0
+anisotropy			0
+bumpmapping			0
+grass				0
+particles			1

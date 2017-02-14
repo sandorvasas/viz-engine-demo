@@ -1,0 +1,104 @@
+Shader1 loaded: shader_grass
+Shader2 loaded: shader_sky
+Shader3 loaded: shader_landscape
+Shader4 loaded: shader_particle
+Shader5 loaded: shader_modelmd5
+Shader6 loaded: shader_lensflare
+Shader7 loaded: shader_item
+Texture1 loaded: data/textures/items.dds
+a
+a
+Texture2 loaded: data/models/tree/tree.dds
+Texture3 loaded: data/models/tree/tree_local.dds
+Texture4 loaded: data/models/elephant.dds
+Texture5 loaded: data/models/elephant_local.dds
+Texture not found: data/textures/grassfin.dds
+Texture not found: nope
+Texture6 loaded: data/models/hands/arm2.dds
+Texture7 loaded: data/models/hands/arm2_local.dds
+Texture8 loaded: data/models/hands/arm2_s.dds
+Texture9 loaded: data/models/cactus/cactus.dds
+Texture10 loaded: data/models/cactus/cactusn.dds
+Texture not found: nope
+Texture not found: nope
+Texture not found: nope
+Texture not found: nope
+Texture not found: nope
+Texture not found: nope
+Texture11 loaded: Data/models/shotgun/shotgun2.dds
+Texture12 loaded: Data/models/shotgun/shotgun_s.dds
+Texture13 loaded: Data/models/shotgun/shotgun2_local.dds
+Texture not found: nope
+Texture not found: nope
+Texture not found: nope
+Texture14 loaded: Data/models/hands/arm2.dds
+Texture15 loaded: Data/models/hands/arm2_s.dds
+Texture16 loaded: Data/models/hands/arm2_local.dds
+Texture17 loaded: Data/models/hands/hand_df.dds
+Texture18 loaded: Data/models/hands/hand_sp.dds
+Texture19 loaded: Data/models/hands/hand_local.dds
+Texture not found: Data/models/pinky/teeth.dds
+Texture not found: Data/models/pinky/teeths.dds
+Texture not found: Data/models/pinky/pinkyn.dds
+Texture not found: Data/models/pinky/pinky.dds
+Texture not found: Data/models/pinky/pinkys.dds
+Texture not found: Data/models/pinky/gobs.dds
+Texture not found: Data/models/pinky/gob.dds
+Texture not found: Data/models/pinky/pinkyn.dds
+Texture not found: Data/models/pinky/pinky.dds
+Texture not found: Data/models/pinky/pinkys.dds
+Texture not found: Data/models/pinky/pinkyn.dds
+Texture not found: Data/models/pinky/pinky.dds
+Texture not found: Data/models/pinky/pinkys.dds
+Texture not found: Data/models/pinky/pinkyn.dds
+Texture not found: Data/models/pinky/pinky.dds
+Texture not found: Data/models/pinky/pinkys.dds
+Texture not found: Data/models/hellknight/tongue.dds
+Texture not found: Data/models/hellknight/tongue_local.dds
+Texture not found: Data/models/hellknight/tongue_s.dds
+Texture not found: Data/models/hellknight/gob2_h.dds
+Texture not found: Data/models/hellknight/gob2_s.dds
+Texture not found: Data/models/hellknight/bighellknight.dds
+Texture not found: Data/models/hellknight/bighellknight_local.dds
+Texture not found: Data/models/hellknight/bighellknight_s.dds
+Texture20 loaded: Data/models/hellknight/hellknight.dds
+Texture21 loaded: Data/models/hellknight/hellknight_local.dds
+Texture22 loaded: Data/models/hellknight/hellknight_s.dds
+Texture23 loaded: Data/models/zfat/fatty_d.dds
+Texture24 loaded: Data/models/zfat/fatty_local.dds
+Texture25 loaded: Data/models/zfat/fatty_s.dds
+Texture not found: Data/models/zfat/fatty2_d.dds
+Texture not found: Data/models/zfat/fatty2_local.dds
+Texture not found: Data/models/zfat/fatty2_s.dds
+Texture not found: Data/models/zfat/fatty2_d.dds
+Texture not found: Data/models/zfat/fatty2_local.dds
+Texture not found: Data/models/zfat/fatty2_s.dds
+Texture not found: Data/models/zfat/fatty2_d.dds
+Texture not found: Data/models/zfat/fatty2_local.dds
+Texture not found: Data/models/zfat/fatty2_s.dds
+Texture26 loaded: data/textures/terrain.dds
+Texture27 loaded: data/textures/terrain_n.dds
+Restoring whole world from file
+Zone loading took 0.2500
+Texture28 loaded: data/textures/clouds.dds
+Texture29 loaded: data/textures/sky/sunray.dds
+Texture30 loaded: data/textures/sky/sun.dds
+monster is standing
+monster is standing
+Texture31 loaded: data/textures/particles/snowflake.dds
+Texture32 loaded: data/textures/particles/01.dds
+Texture33 loaded: data/textures/particles/05.dds
+Texture34 loaded: data/textures/particles/04.dds
+Texture35 loaded: data/textures/fonts/font1.dds
+Texture36 loaded: data/textures/particles/03.dds
+Texture37 loaded: data/textures/particles/07.dds
+Texture38 loaded: data/textures/particles/08.dds
+Texture39 loaded: data/textures/particles/09.dds
+Loading took 1.6540 seconds.
+Zone loading took 0.0000
+Zone loading took 0.1560
+Zone loading took 0.3900
+Zone loading took 0.1090
+Zone loading took 0.0940
+Zone loading took 0.1720
+Zone loading took 0.1400

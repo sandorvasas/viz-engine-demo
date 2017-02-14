@@ -1,0 +1,10 @@
+MD5Version 10
+commandline ""
+
+numJoints 1
+numMeshes 1
+
+joints {
+	"Bone03"	-1 ( -1.22171 -0.000421938 96.5282 ) ( -0.492446 0.507441 -0.507441 )		// Bone02
+}
+

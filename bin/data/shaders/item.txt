@@ -1,0 +1,30 @@
+@FRAGMENT_SHADER
+
+uniform sampler2D in_Texture;
+
+const float textureSize = 1.0 / 16.0;
+
+varying vec2 var_TexAtlasCoord;
+
+void main() 
+{
+	vec2 localCoords = gl_TexCoord[ 0 ].xy * textureSize;
+	gl_FragData[0] = texture2D( in_Texture,  ( var_TexAtlasCoord + localCoords )  );
+}
+
+//-------------------------------------------------------------------------------
+@VERTEX_SHADER
+
+attribute vec3 in_Position;
+attribute vec2 in_TextureAtlasCoord;
+
+varying vec2 var_TexAtlasCoord;
+
+void main()
+{
+	gl_TexCoord[ 0 ].xy = gl_MultiTexCoord0.xy;
+	gl_Position = gl_ModelViewProjectionMatrix  * vec4( in_Position, 1.0 );
+
+	gl_PointSize = 100.0 / gl_Position.w;
+	var_TexAtlasCoord = in_TextureAtlasCoord;
+}

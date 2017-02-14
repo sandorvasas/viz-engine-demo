@@ -1,0 +1,55 @@
+@FRAGMENT_SHADER
+/*========================================================================*/
+uniform sampler2D diff0;
+uniform sampler2D diff1;
+uniform sampler2D diff2;
+uniform sampler2D diff3;
+
+varying vec4 var_Color;
+varying float var_TexUnit;
+//varying float var_PointSize;
+
+void main() 
+{
+	vec2 coord = gl_PointCoord;
+	if ( coord==vec2( 0.0 ) ) coord += vec2( 0.05 );
+	if ( coord==vec2( 1.0 ) ) coord -= vec2( 0.05 );
+
+	vec4 tex0 = texture2D( diff0, coord );
+	vec4 tex1 = texture2D( diff1, coord );
+	vec4 tex2 = texture2D( diff2, coord );
+	vec4 tex3 = texture2D( diff3, coord );
+
+	float TexUnit = var_TexUnit*1.0;
+	
+	vec4 t = mix( tex0, tex1, TexUnit );
+
+/*		 if ( TexUnit == 0.0 ) t = tex0; 
+	else if ( TexUnit == 1.0 ) t = tex1; 
+	else if ( TexUnit == 2.0 ) t = tex2; 
+	else if ( TexUnit == 3.0 ) t = tex3; 
+	*/
+	gl_FragData[0] = t * var_Color;
+}
+
+/*========================================================================*/
+@VERTEX_SHADER
+/*========================================================================*/
+uniform float in_SpriteSize;
+attribute vec3 in_Position;
+attribute vec4 in_Color;
+attribute float in_TexUnit;
+
+varying vec4 var_Color;
+varying float var_TexUnit;
+//varying float var_PointSize;
+
+void main()
+{
+	var_TexUnit = float( in_TexUnit );
+	var_Color = in_Color;
+
+	gl_Position = gl_ModelViewProjectionMatrix  * vec4( in_Position, 1.0 );
+
+	gl_PointSize = in_SpriteSize / gl_Position.w;
+}

@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="WaterDemo.h" />
+    <ClInclude Include="Game\Geometry\Skydome.h">
+      <Filter>Game\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Player.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\World.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="System\WebCam.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Geometry\Grass.h">
+      <Filter>Game\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Geometry\MC_Tables.h">
+      <Filter>Game\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Geometry\Sector2.h">
+      <Filter>Game\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="System\VarStorage.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Weapon.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ParticleSystem.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\WorldGenerator.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Geometry\Model_MD5.h">
+      <Filter>Game\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\AI\AI.h">
+      <Filter>Game\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Physics\Physics.h">
+      <Filter>Game\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\PlayerView.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Physics\RigidBody.h">
+      <Filter>Game\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Geometry\ModelManager.h">
+      <Filter>Game\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Geometry\Material.h">
+      <Filter>Game\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="System\ConsoleProcessor.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Fx\FX.h">
+      <Filter>Game\Fx</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Timer.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObject.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Physics\PhysicsManager.h">
+      <Filter>Game\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Threading.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Blocks.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Item.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Geometry\Chunk.h">
+      <Filter>Game\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Perlin.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\PSystem.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="WaterDemo.cpp" />
+    <ClCompile Include="Game\Player.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Geometry\SkyDome.cpp">
+      <Filter>Game\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\World.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="System\WebCam.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Geometry\Grass.cpp">
+      <Filter>Game\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Geometry\Sector2.cpp">
+      <Filter>Game\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="System\ConsoleProcessor.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Weapon.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\ParticleSystem.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\WorldGenerator.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Geometry\Model_MD5.cpp">
+      <Filter>Game\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\AI\AI.cpp">
+      <Filter>Game\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\PlayerView.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Geometry\ModelManager.cpp">
+      <Filter>Game\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Fx\FX.cpp">
+      <Filter>Game\Fx</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Physics\PhysicsManager.cpp">
+      <Filter>Game\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObject.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Physics\Physics.cpp">
+      <Filter>Game\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Threading.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Blocks.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Item.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Geometry\Chunk.cpp">
+      <Filter>Game\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Perlin.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\PSystem.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{6c529b50-d2a2-40bd-9e19-0a6f4dc4b2c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{79a529fa-65e1-47b8-b4f7-1555840bc2ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Geometry">
+      <UniqueIdentifier>{f5b3065a-0782-4c89-8a76-cdb72559f062}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Physics">
+      <UniqueIdentifier>{219b61eb-bd40-4b01-82df-2ef1a7ab9d80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{795c553e-21b7-4c2c-8aac-ce59947a31ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\AI">
+      <UniqueIdentifier>{9ba2c252-ce5b-437e-ad56-0cec86f5f4a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Other">
+      <UniqueIdentifier>{de01755c-e42b-424e-97f4-d90f5b5cd30d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Fx">
+      <UniqueIdentifier>{6c3f1698-15e8-4161-866d-d5fb1144a452}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\bin\data\shaders\sky.txt">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\bin\data\shaders\grass.txt">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\bin\data\shaders\particle.txt">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\bin\data\shaders\landscape.txt">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\bin\data\shaders\advanced_landscape.txt">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\bin\data\shaders\landscapeDebug.txt">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\bin\data\shaders\md5model.txt">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\bin\data\shaders\postprocess.txt">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\bin\sector.txt">
+      <Filter>Other</Filter>
+    </None>
+    <None Include="..\bin\data\models\materials.mtr">
+      <Filter>Other</Filter>
+    </None>
+    <None Include="..\bin\graph.txt">
+      <Filter>Other</Filter>
+    </None>
+    <None Include="..\bin\data\shaders\lensflare.txt">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\bin\data\weapons.txt">
+      <Filter>Other</Filter>
+    </None>
+    <None Include="..\bin\data\shaders\item.txt">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="..\bin\data\blocks.txt">
+      <Filter>Other</Filter>
+    </None>
+    <None Include="..\bin\data\items.txt">
+      <Filter>Other</Filter>
+    </None>
+  </ItemGroup>
+</Project>

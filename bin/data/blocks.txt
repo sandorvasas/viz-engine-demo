@@ -1,0 +1,195 @@
+textureAtlas {
+	size		16 
+	diffusemap	data/textures/terrain.dds
+	bumpmap		data/textures/terrain_n.dds
+}
+
+
+block grass {
+	tc_top		0,0
+	tc_bottom	2,0
+	tc_side		3,0
+	weight		5.0 kg
+	life		100
+	drops		20% 1 pork
+}
+
+block rock1 {
+	tc_top		0,1
+	tc_bottom	0,1
+	tc_side		0,1
+	weight		15.0 kg
+	life		200
+}
+
+block stone {
+	tc_top		1,0
+	tc_bottom	1,0
+	tc_side		1,0
+	weight		20.0 kg
+	life		200
+}
+
+block cooledlava {
+	tc_top		1,1
+	tc_bottom	1,1
+	tc_side		1,1
+	weight		25.0 kg
+	life		300
+}
+
+block snow {
+	tc_top		2,4
+	tc_bottom	2,4
+	tc_side		4,4
+	weight		6.0 kg
+	life		100
+}
+
+block ice {
+	tc_top		3,4
+	tc_bottom	3,4
+	tc_side		3,4
+	weight		10.0 kg
+	life		150
+	transparent
+}
+
+block soil {
+	tc_top		2,0
+	tc_bottom	2,0
+	tc_side		2,0
+	weight		5.0 kg
+	life		100
+	drops		100% 1 pork
+}
+
+block lava {
+	tc_top		15,15
+	tc_bottom	15,15
+	tc_side		15,15
+	weight		20.0 kg
+	life		50
+	liquid
+	damages		10
+}
+
+block still_water {
+	tc_top		13,12
+	tc_bottom	13,12
+	tc_side		13,12
+	weight		10.0 kg
+	life		10
+	liquid	
+	transparent
+}
+
+block sand {
+	tc_top		2,1
+	tc_bottom	2,1
+	tc_side		2,1
+	weight		10.0 kg
+	life		50
+}
+
+block wood {
+	tc_top		5,1
+	tc_bottom	5,1
+	tc_side		4,1
+	weight		4.0 kg
+	life		100
+}
+
+block coal {
+	tc_top		2,2
+	tc_bottom	2,2
+	tc_side		2,2
+	weight		40.0 kg
+	life		300
+}
+
+block iron_ore {
+	tc_top		1,2
+	tc_bottom	1,2
+	tc_side		1,2
+	weight		70.0 kg
+	life		400
+}
+
+block gold_ore {
+	tc_top		0,2
+	tc_bottom	0,2
+	tc_side		0,2
+	weight		70.0 kg
+	life		1000
+}
+
+block diamond_ore {
+	tc_top		2,3
+	tc_bottom	2,3
+	tc_side		2,3
+	weight		100.0 kg
+	life		5000
+}
+
+block cactus_top {
+	tc_top		5,4
+	tc_bottom	7,4
+	tc_side		6,4
+	weight		20.0 kg
+	life		25
+	drops		100% 1 cactus
+	transparent
+}
+
+block cactus_inner {
+	tc_top		7,4
+	tc_bottom	7,4
+	tc_side		6,4
+	weight		20.0 kg
+	life		25
+	drops		100% 1 cactus		
+	transparent
+}
+
+block brick {
+	tc_top		7,0
+	tc_bottom	7,0
+	tc_side		7,0
+	weight		30.0 kg
+	life		200
+}
+
+block green_leaves {
+	tc_top		5,3
+	tc_bottom	5,3
+	tc_side		5,3
+	weight		0.5 kg
+	life		1
+}
+
+block pumpkin {
+	tc_top		6,6
+	tc_bottom	6,7
+	tc_side		6,7
+	weight		1.0 kg
+	life		1
+}
+
+block jack_o_lantern {
+	tc_top		6,6
+	tc_bottom	6,7
+	tc_side		6,7
+	tc_front	7,7
+	weight		1.0 kg
+	life		1
+}
+
+block jack_o_lantern_lit {
+tc_top		6,6
+	tc_bottom	6,7
+	tc_side		6,7
+	tc_front	8,7
+	weight		1.0 kg
+	life		1
+}

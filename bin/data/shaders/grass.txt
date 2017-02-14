@@ -1,0 +1,75 @@
+@FRAGMENT_SHADER
+
+uniform sampler2D texture;
+uniform float in_Time;
+
+varying vec3 var_lightDir;
+varying vec3 var_viewDir;
+varying vec3 var_normal;
+varying float var_PositionW;
+
+void main()
+{
+	//===============================
+	//	fog calculations
+	//===============================	
+	vec4  fogColor	= vec4( 0.529411765, 0.807843137, 0.980392157, 1.0 );
+	float dist		= length( var_viewDir );
+	float fogFactor = clamp( ( dist-15.0 )/6.0, 0.0, 1.0 );
+
+	vec3 E = normalize( var_viewDir );
+	vec3 N = normalize( var_normal );
+	vec3 L = normalize( var_lightDir );
+	vec3 H = normalize( L + E );
+
+	float l_diff = pow( clamp( dot( N, L ), 0.0, 1.0 ), 2.0 );
+	float l_spec = dot( N, H );
+	float ambient = 0.4;
+
+	vec4 diffuseMap = texture2D( texture, gl_TexCoord[0].st );
+
+	vec3 color3 = diffuseMap.xyz * ( l_diff + ambient );// + pow( l_spec, 10.0 )*0.03;
+
+	vec4 color4 = vec4( color3, diffuseMap.w );
+	gl_FragData[0] = mix( color4, fogColor, fogFactor );
+	gl_FragData[1] = vec4( var_PositionW * 0.1 );
+}
+
+
+
+@VERTEX_SHADER
+
+uniform float in_Time;
+uniform vec3 in_ViewPosition;
+//uniform vec3 lightPos;
+
+
+attribute vec3 in_Position;
+attribute vec3 in_Normal;
+attribute vec3 in_BasePoint;
+
+varying vec3 var_lightDir;
+varying vec3 var_viewDir;
+varying vec3 var_normal;
+varying float var_PositionW;
+
+void main()
+{
+	float t = in_Time * 0.20;
+	vec3 lightScale = vec3( 20.0, 0.0, 20.0 );
+	vec3 lightOffset = vec3( 50.0, 40.0, 50.0 );
+	vec3 lightPos = vec3( sin( t ), 0.0, -cos( t ) ) * lightScale + lightOffset;
+
+	var_normal = normalize( in_Normal );
+	var_lightDir = ( in_Position - lightPos );
+	var_viewDir = ( in_Position - in_ViewPosition );
+
+	gl_TexCoord[0].st = gl_MultiTexCoord0.st;
+
+	float rel_y = in_Position.y - in_BasePoint.y;
+	in_Position.x += sin( in_Time*0.7*rel_y )*0.03;
+	in_Position.z += sin( in_Time*0.7*rel_y )*0.03;
+	gl_Position = gl_ModelViewProjectionMatrix * vec4( in_Position, 1.0 );
+
+	var_PositionW = gl_Position.w;
+}

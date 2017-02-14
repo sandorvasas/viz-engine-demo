@@ -1,0 +1,73 @@
+@FRAGMENT_SHADER
+
+uniform sampler2D in_DiffuseMap;
+uniform sampler2D in_NormalMap;
+uniform sampler2D in_SpecularMap;
+
+varying vec3 var_Normal;
+varying vec3 var_LightDir;
+varying vec3 var_ViewDir;
+
+
+void main()
+{
+	//===============================
+	//	fog calculations
+	//===============================	
+	vec4  fogColor	= vec4( 0.529411765, 0.807843137, 0.980392157, 1.0 );
+	float dist		= length( var_ViewDir );
+	float fogFactor = clamp( ( dist-15.0 )/6.0, 0.0, 1.0 );
+
+	vec4 normalMap = texture2D( in_NormalMap, gl_TexCoord[0].st );
+	vec4 specularMap = texture2D( in_SpecularMap, gl_TexCoord[0].st );
+	vec4 diffuseMap = texture2D( in_DiffuseMap, gl_TexCoord[0].st );
+
+	vec3 L = normalize( var_LightDir );
+	vec3 N = normalize( normalMap.xyz * 4.0 - 2.0 );
+	vec3 E = normalize( var_ViewDir );
+	vec3 H = normalize( L+E );
+
+	float NdotL = clamp( dot( N, L ), 0.0, 1.0 );
+	float NdotH = clamp( dot( N, H ), 0.0, 1.0 );
+	float ambient = 0.2;
+	vec3 color3 = diffuseMap.xyz * ( NdotL + ambient ) + specularMap.xyz * NdotH ;
+
+
+	vec4 color4 = vec4( color3 , 1.0 );
+
+	gl_FragData[0] = mix( color4, fogColor, fogFactor*0.0 );
+	//gl_FragData[1] = vec4( gl_TexCoord[1].xyz, 1.0 );
+	gl_FragData[1] = vec4( normalize( var_Normal ), 1.0 );
+}
+
+
+@VERTEX_SHADER
+uniform float time;
+uniform vec3 in_LightPosition;
+uniform vec3 in_ViewPosition;
+
+attribute vec3 in_Position;
+attribute vec3 in_Normal;
+attribute vec3 in_Tangent;
+
+varying vec3 var_Normal;
+varying vec3 var_LightDir;
+varying vec3 var_ViewDir;
+
+void main()
+{
+	vec3 N = normalize( in_Normal );
+	vec3 T = normalize( in_Tangent );
+	vec3 B = normalize( cross( N, T ) );
+	mat3 TBN = mat3( T, B, N );
+
+	gl_TexCoord[0].st = gl_MultiTexCoord0.st;
+
+	var_Normal = N;
+	var_LightDir = ( in_LightPosition - in_Position ) * TBN;
+	var_ViewDir = ( in_ViewPosition - in_Position );
+
+	gl_Position = gl_ModelViewProjectionMatrix * vec4( in_Position,1.0 );
+
+	gl_TexCoord[1].xyz = ( /*gl_ModelViewProjectionMatrix */ vec4( T,1.0 ) ).xyz;
+}

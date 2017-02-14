@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E87425E4-48EE-4EDA-95BB-7EE108F8B64E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Viz</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\bin\</OutDir>
+    <IncludePath>$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\bin\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalOptions>"vsLib2/vsLib2.lib"  /NODEFAULTLIB:msvcrt.lib %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <AdditionalOptions>"vsLib2/vsLib2.lib" %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Game\AI\AI.h" />
+    <ClInclude Include="Game\Blocks.h" />
+    <ClInclude Include="Game\Fx\FX.h" />
+    <ClInclude Include="Game\Game.h" />
+    <ClInclude Include="Game\GameObject.h" />
+    <ClInclude Include="Game\Geometry\Chunk.h" />
+    <ClInclude Include="Game\Geometry\Grass.h" />
+    <ClInclude Include="Game\Geometry\Material.h" />
+    <ClInclude Include="Game\Geometry\MC_Tables.h" />
+    <ClInclude Include="Game\Geometry\ModelManager.h" />
+    <ClInclude Include="Game\Geometry\Model_MD5.h" />
+    <ClInclude Include="Game\Geometry\Sector2.h" />
+    <ClInclude Include="Game\Geometry\Skydome.h" />
+    <ClInclude Include="Game\Item.h" />
+    <ClInclude Include="Game\ParticleSystem.h" />
+    <ClInclude Include="Game\Perlin.h" />
+    <ClInclude Include="Game\Physics\PhysicsManager.h" />
+    <ClInclude Include="Game\Physics\Physics.h" />
+    <ClInclude Include="Game\Physics\RigidBody.h" />
+    <ClInclude Include="Game\Player.h" />
+    <ClInclude Include="Game\PlayerView.h" />
+    <ClInclude Include="Game\PSystem.h" />
+    <ClInclude Include="Game\Timer.h" />
+    <ClInclude Include="Game\Weapon.h" />
+    <ClInclude Include="Game\World.h" />
+    <ClInclude Include="Game\WorldGenerator.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="System\ConsoleProcessor.h" />
+    <ClInclude Include="System\Threading.h" />
+    <ClInclude Include="System\VarStorage.h" />
+    <ClInclude Include="System\WebCam.h" />
+    <ClInclude Include="WaterDemo.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Game\AI\AI.cpp" />
+    <ClCompile Include="Game\Blocks.cpp" />
+    <ClCompile Include="Game\Fx\FX.cpp" />
+    <ClCompile Include="Game\Game.cpp" />
+    <ClCompile Include="Game\GameObject.cpp" />
+    <ClCompile Include="Game\Geometry\Chunk.cpp" />
+    <ClCompile Include="Game\Geometry\Grass.cpp" />
+    <ClCompile Include="Game\Geometry\ModelManager.cpp" />
+    <ClCompile Include="Game\Geometry\Model_MD5.cpp" />
+    <ClCompile Include="Game\Geometry\Sector2.cpp" />
+    <ClCompile Include="Game\Geometry\SkyDome.cpp" />
+    <ClCompile Include="Game\Item.cpp" />
+    <ClCompile Include="Game\ParticleSystem.cpp" />
+    <ClCompile Include="Game\Perlin.cpp" />
+    <ClCompile Include="Game\Physics\Physics.cpp" />
+    <ClCompile Include="Game\Physics\PhysicsManager.cpp" />
+    <ClCompile Include="Game\Player.cpp" />
+    <ClCompile Include="Game\PlayerView.cpp" />
+    <ClCompile Include="Game\PSystem.cpp" />
+    <ClCompile Include="Game\Weapon.cpp" />
+    <ClCompile Include="Game\World.cpp" />
+    <ClCompile Include="Game\WorldGenerator.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="System\ConsoleProcessor.cpp" />
+    <ClCompile Include="System\Threading.cpp" />
+    <ClCompile Include="System\WebCam.cpp" />
+    <ClCompile Include="WaterDemo.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\bin\data\blocks.txt" />
+    <None Include="..\bin\data\items.txt" />
+    <None Include="..\bin\data\models\materials.mtr" />
+    <None Include="..\bin\data\shaders\advanced_landscape.txt" />
+    <None Include="..\bin\data\shaders\grass.txt" />
+    <None Include="..\bin\data\shaders\item.txt" />
+    <None Include="..\bin\data\shaders\landscape.txt" />
+    <None Include="..\bin\data\shaders\landscapeDebug.txt" />
+    <None Include="..\bin\data\shaders\lensflare.txt" />
+    <None Include="..\bin\data\shaders\md5model.txt" />
+    <None Include="..\bin\data\shaders\particle.txt" />
+    <None Include="..\bin\data\shaders\postprocess.txt" />
+    <None Include="..\bin\data\shaders\sky.txt" />
+    <None Include="..\bin\data\weapons.txt" />
+    <None Include="..\bin\graph.txt" />
+    <None Include="..\bin\sector.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,42 @@
+@FRAGMENT_SHADER
+uniform sampler2D in_Diffuse1;
+uniform sampler2D in_Diffuse2;
+uniform sampler2D in_Diffuse3;
+uniform sampler2D in_Diffuse4;
+
+varying float var_TexUnit;
+varying vec3  var_Color;
+
+void main() 
+{
+	vec4 diffuse;
+
+	if ( var_TexUnit == 0.0 )	diffuse = texture2D( in_Diffuse1, gl_PointCoord );
+	if ( var_TexUnit == 1.0 )	diffuse = texture2D( in_Diffuse2, gl_PointCoord );
+	if ( var_TexUnit == 2.0 )	diffuse = texture2D( in_Diffuse3, gl_PointCoord );
+	if ( var_TexUnit == 3.0 )	diffuse = texture2D( in_Diffuse4, gl_PointCoord );
+
+	gl_FragData[ 0 ] = vec4( var_Color + vec3( 0.7 ), diffuse.w );
+}
+
+
+
+@VERTEX_SHADER
+uniform float	in_SpriteSize;
+
+attribute vec3	in_Position;
+attribute float in_TexUnit;
+attribute vec3  in_Color;
+
+varying float	var_TexUnit;
+varying vec3	var_Color;
+
+void main() 
+{
+	var_Color   = in_Color;	
+	var_TexUnit = in_TexUnit;
+
+	gl_Position = gl_ModelViewProjectionMatrix * vec4( in_Position, 1.0 );
+
+	gl_PointSize = in_SpriteSize;// / gl_Position.w;
+}

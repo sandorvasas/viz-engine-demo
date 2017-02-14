@@ -1,0 +1,42 @@
+textureAtlas 16	data/textures/items.dds
+
+item( food )[ 0 7 ] pork {
+	healthEffect	10	
+}
+
+item( tool )[ 0 6 ] wooden_pickaxe {
+	helpsWith	3	stone
+	health		20
+	craftedAs {
+		1 wood	1 wood	1 wood
+		0 empty	1 stick	0 empty
+		0 empty	1 stick	0 empty
+	}
+}
+
+item( weapon )[ 0 4 ] wooden_sword {
+	type		melee
+	damages		30
+	craftedAs {
+		0 empty	1 wood	0 empty
+		0 empty	1 wood	0 empty
+		0 empty	1 stick	0 empty
+	}
+}
+
+item( material )[ 8 2 ] sulphur {
+}
+
+item( armor )[ 2 0 ] iron_helmet {
+	type		helmet
+	armorPoints	30
+	health		40
+	craftedAs {
+		0 empty	0 empty	0 empty
+		1 iron	1 iron	1 iron
+		1 iron	0 empty	1 iron
+	}
+}
+
+item( block )[ 2 0 ] soil_block {
+}

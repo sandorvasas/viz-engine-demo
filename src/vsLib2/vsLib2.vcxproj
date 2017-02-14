@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9AD3C556-EF1A-4015-B300-B321C01D7287}</ProjectGuid>
+    <RootNamespace>vsLib2</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\vsLib2\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\vsLib2\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <PrecompiledHeaderFile>
+      </PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)vsLib2.h</PrecompiledHeaderOutputFile>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Math\Math.cpp" />
+    <ClCompile Include="Math\Matrix.cpp" />
+    <ClCompile Include="Math\Plane.cpp" />
+    <ClCompile Include="Math\Quaternion.cpp" />
+    <ClCompile Include="Boundings\AABB.cpp" />
+    <ClCompile Include="Boundings\Frustum.cpp" />
+    <ClCompile Include="NspStruct.cpp" />
+    <ClCompile Include="Renderer\Font.cpp" />
+    <ClCompile Include="Renderer\FramebufferObject.cpp" />
+    <ClCompile Include="Renderer\FrameCounter.cpp" />
+    <ClCompile Include="Renderer\Printer.cpp" />
+    <ClCompile Include="Renderer\RenderSystem.cpp" />
+    <ClCompile Include="Renderer\Shader.cpp" />
+    <ClCompile Include="Renderer\Texture.cpp" />
+    <ClCompile Include="Renderer\OpenGL\GLexp.cpp" />
+    <ClCompile Include="Geometry\Vertex.cpp" />
+    <ClCompile Include="Geometry\Model\Model3DS.cpp" />
+    <ClCompile Include="System\Console.cpp" />
+    <ClCompile Include="System\FileManager.cpp" />
+    <ClCompile Include="System\MemoryAllocator.cpp" />
+    <ClCompile Include="System\String.cpp" />
+    <ClCompile Include="Misc\Input.cpp" />
+    <ClCompile Include="System\System.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Math\Math.h" />
+    <ClInclude Include="Math\Matrix.h" />
+    <ClInclude Include="Math\Plane.h" />
+    <ClInclude Include="Math\Quaternion.h" />
+    <ClInclude Include="Math\Vector.h" />
+    <ClInclude Include="Boundings\AABB.h" />
+    <ClInclude Include="Boundings\Frustum.h" />
+    <ClInclude Include="NspStruct.h" />
+    <ClInclude Include="Renderer\Buffer.h" />
+    <ClInclude Include="Renderer\Colors.h" />
+    <ClInclude Include="Renderer\Font.h" />
+    <ClInclude Include="Renderer\FramebufferObject.h" />
+    <ClInclude Include="Renderer\FrameCounter.h" />
+    <ClInclude Include="Renderer\Printer.h" />
+    <ClInclude Include="Renderer\RenderSystem.h" />
+    <ClInclude Include="Renderer\Shader.h" />
+    <ClInclude Include="Renderer\Texture.h" />
+    <ClInclude Include="Renderer\OpenGL\GL.h" />
+    <ClInclude Include="Renderer\OpenGL\GL3.h" />
+    <ClInclude Include="Renderer\OpenGL\GLexp.h" />
+    <ClInclude Include="Renderer\OpenGL\GLext.h" />
+    <ClInclude Include="Renderer\OpenGL\WGLext.h" />
+    <ClInclude Include="Geometry\Vertex.h" />
+    <ClInclude Include="Geometry\Model\Model.h" />
+    <ClInclude Include="Geometry\Model\Model3DS.h" />
+    <ClInclude Include="Renderer\VideoMode.h" />
+    <ClInclude Include="System\Console.h" />
+    <ClInclude Include="System\FileManager.h" />
+    <ClInclude Include="System\Flag.h" />
+    <ClInclude Include="System\List.h" />
+    <ClInclude Include="System\MemoryAllocator.h" />
+    <ClInclude Include="System\String.h" />
+    <ClInclude Include="System\System.h" />
+    <ClInclude Include="Misc\Input.h" />
+    <ClInclude Include="Misc\Light.h" />
+    <ClInclude Include="vsLib2.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

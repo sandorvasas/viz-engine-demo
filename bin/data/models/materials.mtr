@@ -1,0 +1,172 @@
+
+material tree1 
+{
+	diffusemap	data/models/tree/tree.dds
+	bumpmap		data/models/tree/tree_local.dds
+}
+
+material elephant 
+{
+	diffusemap	data/models/elephant.dds
+	bumpmap		data/models/elephant_local.dds
+}
+
+material grassbatch 
+{
+	diffusemap	data/textures/grassfin.dds
+}
+
+material models/weapons/shotgun/shotgun_mflash2
+{
+	diffusemap	nope
+}
+
+material player_hands 
+{
+	diffusemap	data/models/hands/arm2.dds
+	bumpmap		data/models/hands/arm2_local.dds
+	specularmap	data/models/hands/arm2_s.dds
+}
+
+material cactus1
+{
+	diffusemap	data/models/cactus/cactus.dds
+	bumpmap		data/models/cactus/cactusn.dds
+}
+
+material models/weapons/shotgun/shotgun_mflash
+{
+	bumpmap		nope
+	diffusemap	nope
+	specularmap	nope
+}
+
+material models/weapons/shotgun/shotgun_mflashb
+{
+	bumpmap		nope
+	diffusemap	nope
+	specularmap	nope
+}
+
+material models/weapons/shotgun/shotgun2
+{
+	diffusemap	Data/models/shotgun/shotgun2.dds
+	specularmap	Data/models/shotgun/shotgun_s.dds
+	bumpmap		Data/models/shotgun/shotgun2_local.dds
+}
+
+material models/weapons/shell1/sshell
+{
+	bumpmap		nope
+	diffusemap	nope
+	specularmap	nope
+}
+
+material models/characters/player/arm2
+{
+	diffusemap	Data/models/hands/arm2.dds
+	specularmap	Data/models/hands/arm2_s.dds
+	bumpmap		Data/models/hands/arm2_local.dds
+}
+
+material models/weapons/hands/hand
+{
+	diffusemap	Data/models/hands/hand_df.dds
+	specularmap	Data/models/hands/hand_sp.dds
+	bumpmap		Data/models/hands/hand_local.dds
+}
+
+material models/monsters/pinky/teeth
+{
+	diffusemap 	Data/models/pinky/teeth.dds
+	specularmap Data/models/pinky/teeths.dds   	
+}
+
+material models/monsters/pinky/pinky_d
+{
+	bumpmap		Data/models/pinky/pinkyn.dds
+	diffusemap	Data/models/pinky/pinky.dds
+	specularmap	Data/models/pinky/pinkys.dds
+}
+
+material models/monsters/hellknight/gob
+{
+	specularmap	Data/models/pinky/gobs.dds
+	diffusemap	Data/models/pinky/gob.dds
+}
+
+material models/monsters/pinky/pinky
+{
+	bumpmap		Data/models/pinky/pinkyn.dds
+	diffusemap	Data/models/pinky/pinky.dds
+	specularmap	Data/models/pinky/pinkys.dds
+}
+
+material models/monsters/pinky/pinkyns
+{
+	bumpmap		Data/models/pinky/pinkyn.dds
+	diffusemap	Data/models/pinky/pinky.dds
+	specularmap	Data/models/pinky/pinkys.dds
+}
+
+material models/monsters/pinky/pinky_metal
+{
+	bumpmap		Data/models/pinky/pinkyn.dds
+	diffusemap	Data/models/pinky/pinky.dds
+	specularmap	Data/models/pinky/pinkys.dds
+}
+
+material models/monsters/hellknight/tongue
+{
+	diffusemap	Data/models/hellknight/tongue.dds
+	bumpmap		Data/models/hellknight/tongue_local.dds
+	specularmap	Data/models/hellknight/tongue_s.dds
+}
+
+material models/monsters/hellknight/gob2
+{
+	bumpmap 	Data/models/hellknight/gob2_h.dds
+	specularmap	Data/models/hellknight/gob2_s.dds
+}
+
+material models/monsters/hellknight/bighellknight
+{
+   	diffusemap	Data/models/hellknight/bighellknight.dds
+	bumpmap		Data/models/hellknight/bighellknight_local.dds
+	specularmap	Data/models/hellknight/bighellknight_s.dds
+}
+
+material models/monsters/hellknight/hellknight
+{
+	diffusemap	Data/models/hellknight/hellknight.dds
+	bumpmap		Data/models/hellknight/hellknight_local.dds
+	specularmap	Data/models/hellknight/hellknight_s.dds
+}
+
+material models/monsters/zombie/fatty/fatty 
+{
+	diffusemap	Data/models/zfat/fatty_d.dds
+	bumpmap		Data/models/zfat/fatty_local.dds
+	specularmap	Data/models/zfat/fatty_s.dds
+}
+
+material models/mapobjects/filler/monkeywrench
+{
+	diffusemap	Data/models/zfat/fatty2_d.dds
+	bumpmap		Data/models/zfat/fatty2_local.dds
+	specularmap	Data/models/zfat/fatty2_s.dds
+}
+
+material models/monsters/zombie/fatty/fattydamage
+{
+	diffusemap	Data/models/zfat/fatty2_d.dds
+	bumpmap		Data/models/zfat/fatty2_local.dds
+	specularmap	Data/models/zfat/fatty2_s.dds
+}
+
+material models/monsters/skeleton/skeleton01
+{
+	diffusemap	Data/models/zfat/fatty2_d.dds
+	bumpmap		Data/models/zfat/fatty2_local.dds
+	specularmap	Data/models/zfat/fatty2_s.dds
+}

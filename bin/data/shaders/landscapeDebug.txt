@@ -1,0 +1,203 @@
+#2__________________________________________________________________________________________________________
+ negatív oldalakra müködik
+_________________________________________________________
+vsVec3i cell;
+	vsBox destBox = box + velocity;
+	vsBox cellBox;
+
+	vsVec3f orig1 = box.GetCenter();
+	vsVec3f ext1 = box.GetExtents();
+	vsVec3f orig2 = destBox.GetCenter();
+	vsVec3f ext2 = destBox.GetExtents();
+	float	smallestOverlap = 1000.0f;
+	vsVec3f biggestOverlap;
+	vsVec3f overlap;
+	enum { x, y, z } dir;
+
+	aabbs.Free();
+
+	for ( int x = ( int ) destBox.points[ 0 ].x; x < ( int ) destBox.points[ 7 ].x + 1; x++ )
+	for ( int y = ( int ) destBox.points[ 0 ].y; y < ( int ) destBox.points[ 7 ].y + 1; y++ )
+	for ( int z = ( int ) destBox.points[ 0 ].z; z < ( int ) destBox.points[ 7 ].z + 1; z++ ) {
+		cell = vsVec3i( x, y, z );
+		if ( CellInside( cell ) ) 
+			if ( GetBlockTypeIdOfCell( cell ) != 0 ) {
+				aabbs.Expand();
+				game->world->GetBoxOfCell( cell, &aabbs[ aabbs.Length() - 1 ] );
+			}
+	}
+
+	int boxIndex = -1;
+	vsVec3f orig3, ext3, u;
+	REPU( aabbs.Length() ) {
+		aabbs[ i ].SetRenderColor( vsColors::Purple );
+
+		orig2 = ( box + velocity ).GetCenter();
+		orig3 = aabbs[ i ].GetCenter();
+		ext3  = aabbs[ i ].GetExtents();
+
+		overlap = ext2 + ext3 - ( orig3 - orig2 );
+		biggestOverlap = overlap;
+		boxIndex = i;
+		/*
+		if ( overlap.Length() > biggestOverlap.Length() )
+		{
+			biggestOverlap = overlap;
+			boxIndex = i;
+		}
+	}
+	if ( boxIndex > -1 ) {*/
+		aabbs[ boxIndex ].SetRenderColor( vsColors::Blue );
+		
+		u = ( box.GetCenter() - aabbs[ boxIndex ].GetCenter() ).Normalized();
+
+		if ( biggestOverlap.x < biggestOverlap.y && biggestOverlap.x < biggestOverlap.z )
+			velocity.x -= biggestOverlap.x;
+		else
+		if ( biggestOverlap.y < biggestOverlap.z && biggestOverlap.y < biggestOverlap.x )
+			velocity.y -= biggestOverlap.y;
+		else
+		if ( biggestOverlap.z < biggestOverlap.x && biggestOverlap.z < biggestOverlap.y )
+			velocity.z -= biggestOverlap.z;
+
+	}
+
+
+#2__________________________________________________________________________________________________________
+	vsVec3i cell;
+	vsBox destBox = box + velocity;
+	vsBox cellBox;
+
+	vsVec3f orig1 = destBox.GetCenter();
+	vsVec3f ext1 = destBox.GetExtents();
+	vsVec3f orig2;
+	vsVec3f ext2;
+	float	smallestOverlap = 1000.0f;
+	float	overlapX, overlapY, overlapZ;
+	enum { xp = 1, xn, yp, yn, zp, zn } dir = xp;
+	
+	REPU( aabbs.Length() ) {
+		orig2 = aabbs[ i ].GetCenter();
+		ext2 = aabbs[ i ].GetExtents();
+		aabbs[ i ].SetRenderColor( vsColors::White );
+
+		if ( destBox.IsBoxInside( aabbs[ i ] ) )
+			aabbs[ i ].SetRenderColor( vsColors::Green );
+		
+		overlapX = ext1.x + ext2.x - Abs( orig2.x - orig1.x );
+		if ( overlapX > 0.0f && overlapX < smallestOverlap ) {
+			smallestOverlap = overlapX;
+
+			if ( velocity.x < 0.0f ) dir = xp;
+			if ( velocity.x > 0.0f ) dir = xn;
+		}
+
+		overlapY = ext1.y + ext2.y - Abs( orig2.y - orig1.y );
+		if ( overlapY > 0.0f && overlapY < smallestOverlap ) {
+			smallestOverlap = overlapY;
+
+			if ( velocity.y < 0.0f ) dir = yp;
+			if ( velocity.y > 0.0f ) dir = yn;
+		}
+		
+		overlapZ = ext1.z + ext2.z - Abs( orig2.z - orig1.z );
+		if ( overlapZ > 0.0f && overlapZ < smallestOverlap ) {
+			smallestOverlap = overlapZ;
+
+			if ( velocity.z < 0.0f ) dir = zp;
+			if ( velocity.z > 0.0f ) dir = zn;
+		}		
+		
+		if ( smallestOverlap < 1000.0f ) {
+			/*switch( dir ) {
+			case xp: velocity.x += overlapX; break;
+			case xn: velocity.x -= overlapX; break;
+			case yp: velocity.y += overlapY; break;
+			case yn: velocity.y -= overlapY; break;
+			case zp: velocity.z += overlapZ; break;
+			case zn: velocity.z -= overlapZ; break;
+			}*/
+
+			//aabbs[ i ].SetRenderColor( vsColors::Red );
+		}
+#1__________________________________________________________________________________________________________
+
+	ushort val;
+	vsVec3i cell;
+	vsBox destBox = box + velocity;
+	vsBox cellBox;
+
+	vsVec3f origin = box.GetCenter();
+	float scaleX = ( box.points[ 7 ].x - box.points[ 0 ].x ) * 0.5f;
+	float scaleY = ( box.points[ 7 ].y - box.points[ 0 ].y ) * 0.5f;
+	float scaleZ = ( box.points[ 7 ].z - box.points[ 0 ].z ) * 0.5f;
+
+	enum { xp = 1, xn, yp, yn, zp, zn } dir;
+	float overlap, smallestOverlap = 1000.0f;
+	float dist;
+	float minDist = 1000.0f;
+	vsBox minCellBox;
+	REPEAT( 8 ) {
+		cell = game->world->GetCellOfPoint( destBox.points[ i ] );
+		val = GetBlockTypeIdOfCell( cell );
+
+		if ( val != 0 ) {
+			game->world->GetBoxOfCell( cell, &cellBox );
+			if ( velocity.x < 0.0f ) {
+				overlap = Abs( cellBox.points[ 7 ].x - destBox.points[ i ].x );
+				if ( overlap < smallestOverlap ) {
+					overlap = smallestOverlap;
+					dir = xp;
+				}
+			}
+
+			if ( velocity.x > 0.0f ) {
+				overlap = Abs( cellBox.points[ 0 ].x - destBox.points[ i ].x );
+				if ( overlap < smallestOverlap ) {
+					overlap = smallestOverlap;
+					dir = xn;
+				}
+			}
+
+			if ( velocity.y < 0.0f ) {
+				overlap = Abs( cellBox.points[ 7 ].y - destBox.points[ i ].y );
+				if ( overlap < smallestOverlap ) {
+					overlap = smallestOverlap;
+					dir = yp;
+				}
+			}
+
+			if ( velocity.y > 0.0f ) {
+				overlap = Abs( cellBox.points[ 0 ].y - destBox.points[ i ].y );
+				if ( overlap < smallestOverlap ) {
+					overlap = smallestOverlap;
+					dir = yn;
+				}
+			}
+
+			if ( velocity.z < 0.0f ) {
+				overlap = Abs( cellBox.points[ 7 ].z - destBox.points[ i ].z );
+				if ( overlap < smallestOverlap ) {
+					overlap = smallestOverlap;
+					dir = zp;
+				}
+			}
+
+			if ( velocity.z > 0.0f ) {
+				overlap = Abs( cellBox.points[ 0 ].z - destBox.points[ i ].z );
+				if ( overlap < smallestOverlap ) {
+					overlap = smallestOverlap;
+					dir = zn;
+				}
+			}
+
+			switch( dir ) {
+			case xp: velocity.x += overlap; break;
+			case xn: velocity.x -= overlap; break;
+			case yp: velocity.y += overlap; break;
+			case yn: velocity.y -= overlap; break;
+			case zp: velocity.z += overlap; break;
+			case zn: velocity.z -= overlap; break;
+			}
+		}
+	}

@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Math">
+      <UniqueIdentifier>{f374f52b-e3fd-4641-94a6-9e424bf8ead5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Boundings">
+      <UniqueIdentifier>{b31640f6-951f-40bc-87c5-5b4eae485d78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{e3bff383-7c24-414e-b7a8-e856dcbd8801}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\OpenGL">
+      <UniqueIdentifier>{6e8c539d-04f2-4081-9f54-b024d1f16a4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry">
+      <UniqueIdentifier>{0abfd8dd-c5c4-46e5-8117-0d05a6fd25d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry\Model">
+      <UniqueIdentifier>{82c569c2-0f6c-49d7-946f-b72ce669e7e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{91462da3-588a-44e4-bb8d-e6c0f66a818a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Misc">
+      <UniqueIdentifier>{58c632fb-626a-4e0d-9a2d-f6dcb9203cd2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Math\Math.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Matrix.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Plane.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Quaternion.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Boundings\AABB.cpp">
+      <Filter>Boundings</Filter>
+    </ClCompile>
+    <ClCompile Include="Boundings\Frustum.cpp">
+      <Filter>Boundings</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\FramebufferObject.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\FrameCounter.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\Printer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\RenderSystem.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\Shader.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\Texture.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\OpenGL\GLexp.cpp">
+      <Filter>Renderer\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\Vertex.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry\Model\Model3DS.cpp">
+      <Filter>Geometry\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Console.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="System\FileManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="System\String.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc\Input.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="NspStruct.cpp" />
+    <ClCompile Include="System\MemoryAllocator.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="System\System.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\Font.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Math\Math.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Matrix.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Plane.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Quaternion.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vector.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Boundings\AABB.h">
+      <Filter>Boundings</Filter>
+    </ClInclude>
+    <ClInclude Include="Boundings\Frustum.h">
+      <Filter>Boundings</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\FramebufferObject.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\FrameCounter.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\Printer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\RenderSystem.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\Shader.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\Texture.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\OpenGL\GL.h">
+      <Filter>Renderer\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\OpenGL\GL3.h">
+      <Filter>Renderer\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\OpenGL\GLexp.h">
+      <Filter>Renderer\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\OpenGL\GLext.h">
+      <Filter>Renderer\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\OpenGL\WGLext.h">
+      <Filter>Renderer\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Vertex.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Model\Model.h">
+      <Filter>Geometry\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry\Model\Model3DS.h">
+      <Filter>Geometry\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Console.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\FileManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Flag.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\List.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\String.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="System\System.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\Input.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\Light.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="vsLib2.h" />
+    <ClInclude Include="Renderer\Buffer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\VideoMode.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="NspStruct.h" />
+    <ClInclude Include="System\MemoryAllocator.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\Colors.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\Font.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

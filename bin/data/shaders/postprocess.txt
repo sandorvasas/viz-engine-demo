@@ -1,0 +1,93 @@
+@FRAGMENT_SHADER
+uniform int			in_bAmbientOcclusion;
+uniform int			in_bDepthOfField;
+uniform sampler2D	in_Map1;
+uniform sampler2D	in_Map2;
+uniform sampler2D	in_Map3;
+
+void main() 
+{
+	vec4 sceneTexture   = texture2D( in_Map1, gl_TexCoord[0].st );
+	vec4 tangentTexture = texture2D( in_Map2, gl_TexCoord[0].st );
+	vec4 depthTexture   = texture2D( in_Map3, gl_TexCoord[0].st );
+
+	vec4 final = sceneTexture;
+
+	float depth =  depthTexture.x;
+
+
+	// =================================
+	//		Depth of Field
+	// =================================
+	if ( in_bDepthOfField > 0 ) {
+		float deltaX = 2.0 / 1024.0;
+		float deltaY = 2.0 / 768.0;
+		float numSamples = 8.0;
+	
+		if ( depth > 0.99 )  {
+			 final = texture2D( in_Map1, gl_TexCoord[0].st  - vec2( deltaX, 0.0 ) );
+			 final += texture2D( in_Map1, gl_TexCoord[0].st + vec2( deltaX, 0.0 ) );
+			 final += texture2D( in_Map1, gl_TexCoord[0].st - vec2( 0.0, deltaY ) );
+			 final += texture2D( in_Map1, gl_TexCoord[0].st + vec2( 0.0, deltaY ) );
+			 final += texture2D( in_Map1, gl_TexCoord[0].st + vec2( deltaX, deltaY ) );
+			 final += texture2D( in_Map1, gl_TexCoord[0].st - vec2( -deltaX, deltaY ) );
+			 final += texture2D( in_Map1, gl_TexCoord[0].st - vec2( deltaX, deltaY ) );
+			 final += texture2D( in_Map1, gl_TexCoord[0].st + vec2( -deltaX, deltaY ) );
+
+			 final = final / numSamples;
+		}
+	}
+	
+	// =================================
+	//	Horizon Based Ambient Occlusion
+	// =================================
+	if ( in_bAmbientOcclusion > 0 ) {
+		
+		vec3	tangent = tangentTexture.xyz;
+		float	sinT = sin( atan( tangent.z / length( tangent.xy ) ) );
+		float	sinH;
+		int		numDirections = 4;
+		int		numSteps = 4;
+		float	fStep = 0.0013 * 1.0;
+		vec3	curHeight;
+		vec3	maxHeight;
+		float	AO = 0.0;
+
+		maxHeight = curHeight = vec3( gl_TexCoord[0].xy, depth );
+		for ( int j = 0; j < numSteps; j++ ) {
+			curHeight.z = texture2D( in_Map3, curHeight.xy ).z;
+			
+			if ( curHeight.z < maxHeight.z )
+				maxHeight = curHeight;
+
+			curHeight.xy += vec2( 0.0, fStep );
+		}
+		sinH = sin( atan( maxHeight.z / length( maxHeight.xy-gl_TexCoord[0].xy ) ) );
+		AO += sinH - sinT;
+
+
+		maxHeight = curHeight = vec3( gl_TexCoord[0].xy, depth );
+		for ( int j = 0; j < numSteps; j++ ) {
+			curHeight.z = texture2D( in_Map3, curHeight.xy ).z;
+			
+			if ( curHeight.z < maxHeight.z )
+				maxHeight = curHeight;
+
+			curHeight.xy += vec2( fStep, 0.0  );
+		}
+		sinH = sin( atan( maxHeight.z / length( maxHeight.xy-gl_TexCoord[0].xy ) ) );
+		AO += sinH - sinT;
+	
+		final.xyz = vec3( AO * 0.5 );
+	}
+
+	gl_FragData[ 0 ] = vec4( final.xyz, 1.0 );
+}
+
+@VERTEX_SHADER
+
+void main()
+{
+	gl_TexCoord[0].st = gl_MultiTexCoord0.st;
+	gl_Position = ftransform();
+}

@@ -1,0 +1,210 @@
+@FRAGMENT_SHADER
+#version 130
+uniform sampler2D	in_MegaTextureDiffuse;
+uniform sampler2D	in_MegaTextureNormal;
+uniform float		in_Time;
+uniform vec3		in_CellScale;
+
+varying vec3		var_LightDirection;
+varying vec3		var_ViewDirection;
+varying vec3		var_ViewDirectionTBN;
+varying vec3		var_Normal;
+varying vec3		var_Position;
+varying float		var_PositionW;
+varying vec3		var_CellRelativePosition;
+varying vec2		var_Values[8];
+
+
+const float numTexturesPerRow 	  = 4.0;
+const float megaTextureSize	  	  = 1024.0;
+const float textureSize		  = 1.0 / numTexturesPerRow;
+
+
+vec4 TriPlanarBlend( 	sampler2D sample, 
+						int index, 
+						vec3 blend_weights, 
+						vec2 tex_scale )
+{
+	vec2 megaTexUV;
+
+	if ( var_Values[index].x < 0.0 )
+		return vec4( 0.0 );
+
+ 	megaTexUV = var_Values[index];
+	
+	vec3 crp = var_CellRelativePosition;
+	vec3 factor = crp/in_CellScale * textureSize ;
+	
+	vec2 coordXY = megaTexUV + factor.xy;
+	vec2 coordYZ = megaTexUV + factor.yz;
+	vec2 coordXZ = megaTexUV + factor.xz;
+
+	vec4 mapXY = texture2D( sample, coordXY );
+	vec4 mapYZ = texture2D( sample, coordYZ );
+	vec4 mapXZ = texture2D( sample, coordXZ );
+
+	return		mapXY * blend_weights.zzzz +
+			mapYZ * blend_weights.xxxx +
+			mapXZ * blend_weights.yyyy; 
+}
+
+
+void main()
+{
+
+	//===============================
+	//	fog calculations
+	//===============================	
+	vec4  fogColor	= vec4( 0.529411765, 0.807843137, 0.980392157, 1.0 );
+	float dist		= length( var_ViewDirection );
+	float fogFactor = clamp( ( dist-80.0 )/60.0, 0.0, 1.0 );
+
+
+	//===============================
+	//	lighting calculations	
+	//===============================
+	
+	vec3 N = normalize( var_Normal );
+	vec3 L = normalize( var_LightDirection );
+	vec3 E = normalize( var_ViewDirection );
+	vec3 H = normalize( L+E );
+
+	//===============================
+	//	TexCoord generation	
+	//===============================	
+	vec3 blend_weights = ( abs( N ) - 0.2 ) * 0.7;
+	blend_weights = max( vec3( 0.0 ), blend_weights );
+	blend_weights = normalize( blend_weights );
+
+
+	vec4 diffuseMaps[8];
+	int numMaps = 0;
+	for ( int i=0; i<8; ++i )  {
+		diffuseMaps[i] = TriPlanarBlend( in_MegaTextureDiffuse, i, blend_weights, vec2( 1.0 ) );
+		if ( diffuseMaps[i] != vec4( 0.0 ) )
+			numMaps++;
+	}
+	
+
+	
+
+	vec4 diffuseMap = vec4( 0.0 ) ;// + diffuseMaps[0];
+
+	vec3 gamma = ( var_CellRelativePosition )/in_CellScale;
+	diffuseMap += mix( diffuseMaps[0], diffuseMaps[1], gamma.x );
+	diffuseMap += mix( diffuseMaps[2], diffuseMaps[1], gamma.z );
+	diffuseMap += mix( diffuseMaps[3], diffuseMaps[2], gamma.x );
+	diffuseMap += mix( diffuseMaps[3], diffuseMaps[0], gamma.z );
+
+	diffuseMap += mix( diffuseMaps[4], diffuseMaps[5], gamma.x );
+	diffuseMap += mix( diffuseMaps[6], diffuseMaps[5], gamma.z );
+	diffuseMap += mix( diffuseMaps[7], diffuseMaps[6], gamma.x );
+	diffuseMap += mix( diffuseMaps[7], diffuseMaps[4], gamma.z );
+
+	diffuseMap += mix( diffuseMaps[4], diffuseMaps[0], gamma.y );
+	diffuseMap += mix( diffuseMaps[5], diffuseMaps[1], gamma.y );
+	diffuseMap += mix( diffuseMaps[6], diffuseMaps[2], gamma.y );
+	diffuseMap += mix( diffuseMaps[7], diffuseMaps[3], gamma.y );
+
+	diffuseMap /= vec4( float( numMaps )+2.0 );
+
+	float l_diff = pow( clamp( dot( N, L ), 0.0, 1.0 ), 2.0 );
+	float l_spec = dot( N, H );
+
+	float ambient = 0.4;
+	vec3 color3 = diffuseMap.xyz * ( l_diff + ambient );
+
+	vec4 color4 = vec4( color3, 1.0 );
+
+
+	vec4 finalColor =  mix( color4, fogColor, fogFactor );
+
+	gl_FragData[0] = finalColor;
+	gl_FragData[1] = vec4( var_PositionW );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@VERTEX_SHADER
+#version 130
+uniform float	in_Time;
+uniform vec3	in_ViewPosition;
+uniform vec3	in_LightPosition;
+
+attribute vec3	in_Position;
+attribute vec3	in_Normal;
+attribute vec3	in_Tangent;
+attribute vec2	in_TexCoord;
+attribute vec4	in_MegaTextureOffset;
+attribute vec4	in_CellValues1;
+attribute vec4	in_CellValues2;
+
+varying vec3	var_LightDirection;
+varying vec3	var_ViewDirection;
+varying vec3	var_ViewDirectionTBN;
+varying vec3	var_Normal;
+varying vec3	var_Position;
+varying float	var_PositionW;
+varying vec2	var_Values[8];
+varying vec3	var_CellRelativePosition;
+
+
+
+const float numTexturesPerRow 	  = 4.0;
+const float megaTextureSize	  	  = 1024.0;
+const float textureSize		  = 1.0 / numTexturesPerRow;
+
+
+
+vec2 DecodeMegaTextureCoords( float encoded )
+{
+	if ( encoded < 0.0 )
+		return vec2( -1.0 );
+	vec2 ret;
+	float enc1 = floor( encoded );
+	ret.x = mod( enc1, numTexturesPerRow );
+	ret.y = ( enc1-ret.x ) * textureSize;
+
+	return ret * textureSize;
+}
+
+void main()
+{
+	vec3 T = normalize( in_Tangent );
+	vec3 N = normalize( in_Normal );
+	vec3 B = normalize( cross( T, N ) );
+	mat3 TBN = mat3( T, B, N );
+
+	gl_TexCoord[0].st = gl_MultiTexCoord0.st;
+	gl_Position = gl_ModelViewProjectionMatrix * vec4( in_Position, 1.0 );
+
+	var_Normal			 = N;
+	var_LightDirection	 = ( in_LightPosition - in_Position );
+	var_ViewDirection	 = ( in_ViewPosition - in_Position );
+	var_ViewDirectionTBN = var_ViewDirection * TBN;
+	var_Position		 = in_Position;
+	var_PositionW		 = gl_Position.w;
+
+	var_Values[0] = DecodeMegaTextureCoords( in_CellValues1.x );
+	var_Values[1] = DecodeMegaTextureCoords( in_CellValues1.y );
+	var_Values[2] = DecodeMegaTextureCoords( in_CellValues1.z );
+	var_Values[3] = DecodeMegaTextureCoords( in_CellValues1.w );
+	var_Values[4] = DecodeMegaTextureCoords( in_CellValues2.x );
+	var_Values[5] = DecodeMegaTextureCoords( in_CellValues2.y );
+	var_Values[6] = DecodeMegaTextureCoords( in_CellValues2.z );
+	var_Values[7] = DecodeMegaTextureCoords( in_CellValues2.w );
+			
+
+
+	var_CellRelativePosition = ( gl_MultiTexCoord0.xyz - in_MegaTextureOffset.xyz );
+}

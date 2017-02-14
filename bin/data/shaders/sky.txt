@@ -1,0 +1,22 @@
+@FRAGMENT_SHADER
+
+uniform sampler2D diffusemap;
+
+void main()
+{
+	gl_FragData[ 0 ] = texture2D( diffusemap, gl_TexCoord[0].st ) * 0.0 +  vec4( 0.8, 0.8, 0.8, 1.0 );
+	gl_FragData[ 1 ] = vec4( 0.0, 0.0, 0.0, 1.0 );
+}
+
+@VERTEX_SHADER
+
+uniform float time;
+attribute vec3 in_Position;
+attribute vec2 in_TexCoord0;
+
+void main()
+{
+	gl_TexCoord[0].st = gl_MultiTexCoord0.st;//in_TexCoord0.st+vec2( time*0.0000, 0.0 );
+
+	gl_Position = ( gl_ModelViewProjectionMatrix * vec4( in_Position,1.0 ) );
+}
